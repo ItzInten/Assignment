@@ -8,7 +8,9 @@ namespace Assignment
         static void Main(string[] args)
         {
             vehicle vehicle1 = new vehicle();
-            Console.WriteLine(vehicle1.vehicleappearing());
+            systeminterface intrfc = new systeminterface();
+            vehicle1.vehicleappearing();
+            intrfc.intrface();
             Console.ReadKey();
         }
     }

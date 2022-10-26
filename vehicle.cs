@@ -1,8 +1,8 @@
 class vehicle
 {
-    int[,] array = new int[100, 2];
-    int cars, vans, hgvs;
-    public int vehicleappearing()
+    public int[,] array = new int[100, 2];
+    public static int cars, vans, hgvs;
+    public void vehicleappearing()
     {
         var rand = new Random();
         for (int i = 0; i < 100; i++)
@@ -67,8 +67,5 @@ class vehicle
                 }
             }
         }
-        Console.WriteLine(cars + " " + vans + " " + hgvs);
-        Console.ReadKey();
-        return array[100,2];
     }
 }
