@@ -15,9 +15,10 @@ namespace Assignment
     class vehicle
     {
         int infinity, queue, vehicleamount = 0;
+        int maxamountofvehicles = 0;
         public int vehicleappearing()
         {
-            while (infinity == 0)
+            while (maxamountofvehicles < 100)
             {
                 var rand = new Random();
 
@@ -35,34 +36,39 @@ namespace Assignment
                     vehicleamount++;
                     Console.WriteLine("Vehicle created, but queue now is " + vehicleamount);
                 }
-                queue++;
+                int [,] arrayofarrays = new int [100,2]; 
+
                 int[,] array = new int[1, 4];
                 for (int i = 0; i < 1; i++)
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (j==1)
-                        {
-                            array[i,j] = rand.Next(1,26);
-                            Console.WriteLine(array[i, j]);
-                        }
-                        else if (j == 2)
-                        {
-                            array[i, j] = rand.Next(1,41);
-                            Console.WriteLine(array[i, j]);
-                        }
-                        else if (j == 3)
-                        {
-                            array[i, j] = rand.Next(1,76);
-                            Console.WriteLine(array[i, j]);
-                        }
-                        else
+                        if (i == 0 && j == 0)
                         {
                             array[i, j] = rand.Next(1,4);
                             Console.WriteLine(array[i, j]);
                         }
+                        else if (array [0,0] == 1)
+                        {
+                            array[i, j] = rand.Next(1,26);
+                            Console.WriteLine(array[i, j]);
+                            break;
+                        }
+                        else if (array [0,0] == 2)
+                        {
+                            array[i, j] = rand.Next(1,41);
+                            Console.WriteLine(array[i, j]);
+                            break;
+                        }
+                        else if (array [0,0] == 3)
+                        {
+                            array[i, j] = rand.Next(1,76);
+                            Console.WriteLine(array[i, j]);
+                            break;
+                        }
                     }
                 }
+                maxamountofvehicles++;
             }
             return vehicleamount;
         }
