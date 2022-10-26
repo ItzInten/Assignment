@@ -1,8 +1,8 @@
 class vehicle
 {
-        int[,] array = new int[100, 2];
+    int[,] array = new int[100, 2];
+    int cars, vans, hgvs;
     public int vehicleappearing()
-
     {
         var rand = new Random();
         for (int i = 0; i < 100; i++)
@@ -16,7 +16,7 @@ class vehicle
             else
             {
                 int time = rand.Next(1000, 2000);
-                Thread.Sleep(time);
+                //Thread.Sleep(time);
                 Console.WriteLine("Vehicle created, but queue now is " + (i+1));
             }
             for (int j = 0; j < 2; j++)
@@ -46,6 +46,28 @@ class vehicle
                 }
             }
         }
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                if ((array[i,j] == 1))
+                {
+                    cars++;
+                    break;
+                }
+                else if ((array[i,j] == 2))
+                {
+                    vans++;
+                    break;
+                }
+                else if ((array[i,j] == 3))
+                {
+                    hgvs++;
+                    break;
+                }
+            }
+        }
+        Console.WriteLine(cars + " " + vans + " " + hgvs);
         Console.ReadKey();
         return array[100,2];
     }
