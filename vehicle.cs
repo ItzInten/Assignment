@@ -1,26 +1,19 @@
 class vehicle
 {
     public int[,] array = new int[100, 2];
+    public int i = 100; int j = 2;
     public static int cars, vans, hgvs;
     public void vehicleappearing()
     {
+        Pump queue1 = new Pump();
+        Thread myNewThread = new Thread(() => queue1.queue(i,j,array));
+        myNewThread.Start();
         var rand = new Random();
         systeminterface intrfc1 = new systeminterface();
-        for (int i = 0; i < 100; i++)
+        Pump queingsystem = new Pump();
+        for (i = 0; i < 100; i++)
         {
-            /*if (i <= 3)
-            {
-                int time = rand.Next(1500, 2200);
-                Thread.Sleep(time);
-                Console.WriteLine("Vehicle created");
-            }
-            else
-            {
-                int time = rand.Next(1000, 2000);
-                //Thread.Sleep(time);
-                Console.WriteLine("Vehicle created, but queue now is " + (i + 1));
-            }*/
-            for (int j = 0; j < 2; j++)
+            for (j = 0; j < 2; j++)
             {
                 if (j == 0)
                 {
@@ -43,6 +36,8 @@ class vehicle
                         Thread.Sleep(time);
                         Console.WriteLine("Vehicle created, but queue now is " + (i + 1));
                     }
+                    queue1.queue(i,j,array);
+                    Thread.Sleep(1000);
                     Console.Clear();
                     break;
                 }
@@ -63,6 +58,7 @@ class vehicle
                         Thread.Sleep(time);
                         Console.WriteLine("Vehicle created, but queue now is " + (i + 1));
                     }
+                    queue1.queue(i,j,array);
                     Thread.Sleep(1000);
                     Console.Clear();
                     break;
@@ -84,37 +80,12 @@ class vehicle
                         Thread.Sleep(time);
                         Console.WriteLine("Vehicle created, but queue now is " + (i + 1));
                     }
+                    queue1.queue(i,j,array);
                     Thread.Sleep(1000);
                     Console.Clear();
                     break;
                 }
             }
         }
-        /*for (int i = 0; i < 100; i++)
-        {
-            for (int j = 0; j < 2; j++)
-            {
-                if ((array[i,j] == 1))
-                {
-                    cars++;
-                    break;
-                }
-                else if ((array[i,j] == 2))
-                {
-                    vans++;
-                    break;
-                }
-                else if ((array[i,j] == 3))
-                {
-                    hgvs++;
-                    break;
-                }
-                systeminterface intrfc1 = new systeminterface();
-                    intrfc1.intrface();
-                    Console.WriteLine("Input any button to update: ");
-                    Console.ReadKey();
-                    Console.Clear();
-            }
-        }*/
     }
 }
